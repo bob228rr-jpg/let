@@ -30,6 +30,10 @@ body {
   font-weight: 700;
 }
 
+body.gate-open {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -44,19 +48,25 @@ img {
   position: fixed;
   inset: 0;
   z-index: 20;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 14px;
-  background: #050605;
+  padding: 24px;
+  background:
+    linear-gradient(0deg, rgba(5, 6, 5, 0.88), rgba(5, 6, 5, 0.64)),
+    url("assets/let/token-main.jpg") center / cover;
   color: var(--ink);
+  cursor: pointer;
   text-align: center;
-  animation: gate-fade 1.6s ease 0.9s forwards;
-  pointer-events: none;
+  transition: opacity 700ms ease, visibility 700ms ease;
 }
 
 .intro-gate span {
   font-family: "Archivo Black", Impact, sans-serif;
   font-size: clamp(1.8rem, 6vw, 5.4rem);
+  line-height: 0.92;
   text-transform: uppercase;
 }
 
@@ -65,11 +75,28 @@ img {
   font-size: 0.92rem;
 }
 
-@keyframes gate-fade {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
+.intro-gate.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.gate-button {
+  min-height: 46px;
+  padding: 13px 18px;
+  border: 1px solid var(--line);
+  background: var(--ink);
+  color: #070807;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.gate-button:hover,
+.intro-gate:focus-visible .gate-button {
+  background: #fff8df;
 }
 
 .hero {
@@ -278,6 +305,7 @@ li {
 .compare,
 .fingers,
 .gallery,
+.source-pack,
 .community,
 .contract {
   padding: clamp(58px, 8vw, 118px) clamp(18px, 5vw, 70px);
@@ -337,7 +365,8 @@ li {
 }
 
 .compare > .section-copy {
-  margin-bottom: 34px;
+  margin: 0 auto 34px;
+  text-align: center;
 }
 
 .compare-grid {
@@ -345,7 +374,7 @@ li {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  margin-bottom: 34px;
+  margin: 0 auto 34px;
 }
 
 .compare-grid article,
@@ -365,6 +394,7 @@ ul {
 
 .wide-art {
   width: min(1180px, 100%);
+  margin: 0 auto;
 }
 
 .wide-art img {
@@ -405,6 +435,57 @@ ul {
 .gallery-grid img:first-child,
 .gallery-grid img:nth-child(2) {
   filter: saturate(1);
+}
+
+.source-pack {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 180, 94, 0.12), transparent 28%),
+    radial-gradient(circle at 86% 82%, rgba(16, 79, 140, 0.16), transparent 30%),
+    #0b0d0b;
+}
+
+.source-pack-heading {
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.source-pack-heading p:not(.eyebrow) {
+  margin-inline: auto;
+  max-width: 660px;
+}
+
+.source-grid {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.source-grid figure {
+  display: grid;
+  grid-template-rows: 420px 42px;
+  margin: 0;
+  border: 1px solid rgba(247, 239, 217, 0.2);
+  background: rgba(247, 239, 217, 0.06);
+  overflow: hidden;
+}
+
+.source-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0d0f0c;
+}
+
+.source-grid figcaption {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(247, 239, 217, 0.14);
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
 }
 
 .community {
@@ -476,10 +557,6 @@ footer a {
   html {
     scroll-behavior: auto;
   }
-
-  .intro-gate {
-    display: none;
-  }
 }
 
 @media (max-width: 980px) {
@@ -509,6 +586,14 @@ footer a {
   .gallery-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .source-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .source-grid figure {
+    grid-template-rows: 430px 42px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -532,6 +617,7 @@ footer a {
   .compare,
   .fingers,
   .gallery,
+  .source-pack,
   .community,
   .contract {
     padding-inline: 16px;
@@ -547,5 +633,13 @@ footer a {
     height: auto;
     object-fit: contain;
     background: #0d0f0c;
+  }
+
+  .source-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .source-grid figure {
+    grid-template-rows: minmax(420px, 68vh) 42px;
   }
 }

@@ -22,11 +22,19 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="intro-gate" aria-hidden="true">
+  <body class="gate-open">
+    <div
+      class="intro-gate"
+      id="intro-gate"
+      role="button"
+      tabindex="0"
+      aria-label="Enter the $LET site and start the music"
+    >
       <span>let it all work out</span>
-      <small>Tap or click to continue</small>
+      <button class="gate-button" type="button">enter + play</button>
+      <small id="gate-status">Tap or click to continue</small>
     </div>
+    <audio id="theme-audio" src="assets/let/let-it-all-work-out.mp3" preload="auto" loop></audio>
 
     <header class="hero" id="quiet">
       <nav class="topbar" aria-label="Primary navigation">
@@ -148,6 +156,47 @@
         </div>
       </section>
 
+      <section class="source-pack" aria-labelledby="source-pack-title">
+        <div class="section-copy source-pack-heading">
+          <p class="eyebrow">Source pack</p>
+          <h2 id="source-pack-title">The full $LET image set.</h2>
+          <p>
+            Every version carries the same quiet signal: fingers crossed, no
+            panic, let it all work out.
+          </p>
+        </div>
+        <div class="source-grid">
+          <figure>
+            <img src="assets/let/sunset-hand.jpeg" alt="Green crossed fingers at sunset" />
+            <figcaption>pepe</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/let/fin.jpeg" alt="Crossed flipper" />
+            <figcaption>penguin</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/let/paw.jpeg" alt="Soft paw crossed fingers" />
+            <figcaption>doge</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/let/line-hand.jpeg" alt="Black and white crossed fingers illustration" />
+            <figcaption>wojak</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/let/pool-hand.jpeg" alt="Crossed fingers by a bright resort pool" />
+            <figcaption>alon</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/let/stone-hand.jpeg" alt="Stone crossed fingers in a storm" />
+            <figcaption>whale</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/let/suit-hand.jpeg" alt="Crossed fingers near a flag" />
+            <figcaption>trump</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="community" id="community" aria-labelledby="community-title">
         <div class="community-card">
           <p class="eyebrow">Community</p>
@@ -183,5 +232,6 @@
       <span>$LET</span>
       <a href="https://x.com/Let_solana_" target="_blank" rel="noreferrer">@Let_solana_</a>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
