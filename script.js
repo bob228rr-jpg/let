@@ -40,3 +40,35 @@
     }
   });
 })();
+
+(function () {
+  const copyTargets = document.querySelectorAll("[data-contract]");
+
+  if (!copyTargets.length) return;
+
+  const contract = "CE9e5fTtaYsasEsoaxUr3hryE3nnFxe2q1LocgPgpump";
+
+  copyTargets.forEach((target) => {
+    const label = target.querySelector("small");
+    const originalLabel = label ? label.textContent : "";
+
+    target.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(target.dataset.contract || contract);
+        if (label) {
+          label.textContent = "copied";
+          window.setTimeout(() => {
+            label.textContent = originalLabel;
+          }, 1600);
+        }
+      } catch (error) {
+        if (label) {
+          label.textContent = "copy failed";
+          window.setTimeout(() => {
+            label.textContent = originalLabel;
+          }, 1600);
+        }
+      }
+    });
+  });
+})();

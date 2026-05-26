@@ -167,18 +167,21 @@ h3,
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  max-width: 260px;
+  max-width: min(46vw, 430px);
   min-height: 36px;
   padding: 8px 12px;
   border: 1px solid var(--line);
   background: rgba(247, 239, 217, 0.08);
   color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
   font-size: 0.78rem;
 }
 
 .contract-chip strong {
   color: var(--ink);
-  text-transform: uppercase;
+  overflow-wrap: anywhere;
+  text-transform: none;
 }
 
 .nav-links {
@@ -520,7 +523,11 @@ ul {
 .contract-box {
   display: grid;
   gap: 10px;
+  width: 100%;
   color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
 }
 
 .contract-box span {
@@ -530,9 +537,16 @@ ul {
 
 .contract-box strong {
   color: var(--ink);
-  font-family: "Archivo Black", Impact, sans-serif;
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: 1;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.05rem, 2.5vw, 2.6rem);
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-transform: none;
+}
+
+.contract-box small {
+  font-size: 0.82rem;
   text-transform: uppercase;
 }
 
